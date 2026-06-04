@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: table
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${URL}
+    username: ${USERNAME}
+    password: ${PASSWORD}
+  application:
+    name: ite-3rd-ecommerce
+
