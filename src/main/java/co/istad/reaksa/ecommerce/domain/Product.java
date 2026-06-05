@@ -29,6 +29,7 @@ public class Product {
     private String description;
     @Column(nullable = false)
     private String thumbnail;
+
     @Column(nullable = false)
     private BigDecimal unitPrice;
 
@@ -41,7 +42,7 @@ public class Product {
     @Column(nullable = false)
     private Boolean isDeleted;
 
-    @ManyToOne  //each product to one category
+    @ManyToOne  //each product  to one category
     private Category category;
 
    @OneToMany(mappedBy = "product")
