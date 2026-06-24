@@ -26,7 +26,6 @@ public class CategoryController {
 
     }
 
-    
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
     public Page<CategoryResponse> getAllCategories(
