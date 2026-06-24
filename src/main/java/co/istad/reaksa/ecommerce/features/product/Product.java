@@ -1,5 +1,7 @@
-package co.istad.reaksa.ecommerce.domain;
+package co.istad.reaksa.ecommerce.features.product;
 
+import co.istad.reaksa.ecommerce.features.category.Category;
+import co.istad.reaksa.ecommerce.features.order.OrderLine;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

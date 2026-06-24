@@ -1,12 +1,8 @@
-package co.istad.reaksa.ecommerce.service.impl;
+package co.istad.reaksa.ecommerce.features.category;
 
-import co.istad.reaksa.ecommerce.domain.Category;
-import co.istad.reaksa.ecommerce.dto.CategoryResponse;
-import co.istad.reaksa.ecommerce.dto.CreateCategoryRequest;
-import co.istad.reaksa.ecommerce.dto.UpdateCategoryRequest;
-import co.istad.reaksa.ecommerce.mapper.CategoryMapper;
-import co.istad.reaksa.ecommerce.repository.CategoryRepository;
-import co.istad.reaksa.ecommerce.service.CategoryService;
+import co.istad.reaksa.ecommerce.features.category.dto.CategoryResponse;
+import co.istad.reaksa.ecommerce.features.category.dto.CreateCategoryRequest;
+import co.istad.reaksa.ecommerce.features.category.dto.UpdateCategoryRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -16,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service

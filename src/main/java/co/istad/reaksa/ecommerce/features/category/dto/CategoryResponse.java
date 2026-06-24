@@ -1,4 +1,4 @@
-package co.istad.reaksa.ecommerce.dto;
+package co.istad.reaksa.ecommerce.features.category.dto;
 
 import lombok.Builder;
 

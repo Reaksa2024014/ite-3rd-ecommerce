@@ -1,6 +1,5 @@
-package co.istad.reaksa.ecommerce.repository;
+package co.istad.reaksa.ecommerce.features.category;
 
-import co.istad.reaksa.ecommerce.domain.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

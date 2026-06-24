@@ -1,9 +1,8 @@
-package co.istad.reaksa.ecommerce.controller;
+package co.istad.reaksa.ecommerce.features.category;
 
-import co.istad.reaksa.ecommerce.dto.CategoryResponse;
-import co.istad.reaksa.ecommerce.dto.CreateCategoryRequest;
-import co.istad.reaksa.ecommerce.dto.UpdateCategoryRequest;
-import co.istad.reaksa.ecommerce.service.CategoryService;
+import co.istad.reaksa.ecommerce.features.category.dto.CategoryResponse;
+import co.istad.reaksa.ecommerce.features.category.dto.CreateCategoryRequest;
+import co.istad.reaksa.ecommerce.features.category.dto.UpdateCategoryRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

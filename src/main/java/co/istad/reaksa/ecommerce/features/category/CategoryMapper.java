@@ -1,9 +1,8 @@
-package co.istad.reaksa.ecommerce.mapper;
+package co.istad.reaksa.ecommerce.features.category;
 
-import co.istad.reaksa.ecommerce.domain.Category;
-import co.istad.reaksa.ecommerce.dto.CategoryResponse;
-import co.istad.reaksa.ecommerce.dto.CreateCategoryRequest;
-import co.istad.reaksa.ecommerce.dto.UpdateCategoryRequest;
+import co.istad.reaksa.ecommerce.features.category.dto.CategoryResponse;
+import co.istad.reaksa.ecommerce.features.category.dto.CreateCategoryRequest;
+import co.istad.reaksa.ecommerce.features.category.dto.UpdateCategoryRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 

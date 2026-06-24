@@ -1,5 +1,9 @@
-spring:
+file:
+  client-path: /file
+  storage-location: C:\Users\ASUS PC\Pictures\ite-3re\
+  base-uri: http://localhost:${server.port}${file.client-path}/
 
+spring:
   jpa:
     hibernate:
       ddl-auto: update

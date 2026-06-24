@@ -1,6 +1,5 @@
-package co.istad.reaksa.ecommerce.repository;
+package co.istad.reaksa.ecommerce.features.order;
 
-import co.istad.reaksa.ecommerce.domain.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
