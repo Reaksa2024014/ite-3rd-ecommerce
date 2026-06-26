@@ -33,7 +33,7 @@ public class Order {
     @Column(nullable = false)
     private Boolean isDeleted;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade= CascadeType.ALL)  //Cascade All can save more than tables.
     private List<OrderLine> orderLines;
 
 }

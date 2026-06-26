@@ -26,7 +26,7 @@ public class OrderLine {
     private Product product;
 
     @Column(nullable = false)
-    private Integer gty;
+    private Integer qty;
 
     @Column(nullable = false)
     private BigDecimal unitPrice;
