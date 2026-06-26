@@ -1,8 +1,8 @@
 package co.istad.reaksa.ecommerce.features.order;
 
-import co.istad.reaksa.ecommerce.features.category.Category;
 import co.istad.reaksa.ecommerce.features.order.dto.CreateOrderRequest;
 import co.istad.reaksa.ecommerce.features.order.dto.OrderResponse;
+import co.istad.reaksa.ecommerce.features.order.dto.SoftDeleteUpdateRequest;
 import co.istad.reaksa.ecommerce.features.order.dto.StatusUpdateRequest;
 import co.istad.reaksa.ecommerce.features.product.Product;
 import co.istad.reaksa.ecommerce.features.product.ProductRepository;
@@ -33,7 +33,6 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public OrderResponse setPaymentStatus(UUID id, StatusUpdateRequest statusUpdateRequest) {
-        // check if order exists
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
@@ -47,8 +46,20 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    public OrderResponse softDeleteById(UUID id, SoftDeleteUpdateRequest softDeleteUpdateRequest) {
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Order not found with id: " + id
+                ));
+
+        order.setIsDeleted(softDeleteUpdateRequest.isDeleted());
+        order = orderRepository.save(order);
+        return orderMapper.mapOrderToOrderResponse(order);
+    }
+
+    @Override
     public void hardDeleteById(UUID id) {
-        // check if category exists
         Order order = orderRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND,
@@ -58,29 +69,6 @@ public class OrderServiceImpl implements OrderService{
         orderRepository.delete(order);
     }
 
-
-
-    @Override
-    public OrderResponse softDeleteById(UUID id) {
-        // check if category exists
-        Order order = orderRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND,
-                        "Order not found with id: " + id
-                ));
-
-        // check if already soft deleted
-        if (order.getIsDeleted()) {
-            throw new ResponseStatusException(
-                    HttpStatus.CONFLICT,
-                    "Order with id: " + id + " has already been deleted"
-            );
-        }
-        order.setIsDeleted(true);
-        order = orderRepository.save(order);
-        return orderMapper.mapOrderToOrderResponse(order);
-
-    }
 
     @Override
     public OrderResponse findById(UUID id) {
@@ -96,13 +84,9 @@ public class OrderServiceImpl implements OrderService{
     public Page<OrderResponse> findAll(int pageNumber, int pageSize) {
         Sort sortById = Sort.by(Sort.Direction.DESC, "id");
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, sortById);
-
         Page<Order> orders = orderRepository.findAll(pageRequest);
-
         return orders.map(orderMapper::mapOrderToOrderResponse);
     }
-
-
 
 
     @Override
@@ -141,9 +125,7 @@ public class OrderServiceImpl implements OrderService{
         order.setIsDeleted(false);
         order.setOrderedAt(LocalDateTime.now());
         order.setStatus(false);
-
         Order savedOrder = orderRepository.save(order);
-
         return orderMapper.mapOrderToOrderResponse(savedOrder);
     }
 }

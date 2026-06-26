@@ -2,6 +2,7 @@ package co.istad.reaksa.ecommerce.features.order;
 
 import co.istad.reaksa.ecommerce.features.order.dto.CreateOrderRequest;
 import co.istad.reaksa.ecommerce.features.order.dto.OrderResponse;
+import co.istad.reaksa.ecommerce.features.order.dto.SoftDeleteUpdateRequest;
 import co.istad.reaksa.ecommerce.features.order.dto.StatusUpdateRequest;
 import co.istad.reaksa.ecommerce.features.product.dto.ProductResponse;
 import org.springframework.data.domain.Page;
@@ -13,12 +14,11 @@ public interface OrderService {
 
     OrderResponse createNew(CreateOrderRequest createOrderRequest);
 
-
     Page<OrderResponse> findAll(int pageNumber, int pageSize);
 
     OrderResponse findById(UUID id);
 
-    OrderResponse softDeleteById(UUID id);
+    OrderResponse softDeleteById(UUID id, SoftDeleteUpdateRequest softDeleteUpdateRequest);
 
     void hardDeleteById(UUID id);
 

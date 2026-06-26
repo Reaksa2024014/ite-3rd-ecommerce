@@ -2,6 +2,7 @@ package co.istad.reaksa.ecommerce.features.order;
 
 import co.istad.reaksa.ecommerce.features.order.dto.CreateOrderRequest;
 import co.istad.reaksa.ecommerce.features.order.dto.OrderResponse;
+import co.istad.reaksa.ecommerce.features.order.dto.SoftDeleteUpdateRequest;
 import co.istad.reaksa.ecommerce.features.order.dto.StatusUpdateRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -16,9 +17,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class OrderController {
 
-
     private final OrderService orderService;
-
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
@@ -28,14 +27,14 @@ public class OrderController {
 
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}/soft-delete")
-    public OrderResponse softDeleteById(@PathVariable UUID id) {
-        return orderService.softDeleteById(id);
+    public OrderResponse softDeleteById(@PathVariable UUID id, @RequestBody SoftDeleteUpdateRequest softDeleteUpdateRequest) {
+        return orderService.softDeleteById(id, softDeleteUpdateRequest);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}/status")
     public OrderResponse changeStatus(@PathVariable UUID id, @RequestBody StatusUpdateRequest statusUpdateRequest) {
-        return orderService.setPaymentStatus(id,statusUpdateRequest);
+        return orderService.setPaymentStatus(id, statusUpdateRequest);
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -50,7 +49,6 @@ public class OrderController {
             @RequestParam(defaultValue = "10") int pageSize) {
         return orderService.findAll(pageNumber, pageSize);
     }
-
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
