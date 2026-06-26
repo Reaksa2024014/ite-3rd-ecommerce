@@ -2,8 +2,11 @@ file:
   client-path: /file
   storage-location: C:\Users\ASUS PC\Pictures\ite-3re\
   base-uri: http://localhost:${server.port}${file.client-path}/
-
 spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 20MB
   jpa:
     hibernate:
       ddl-auto: update
@@ -19,6 +22,8 @@ spring:
   application:
     name: ite-3rd-ecommerce
 
+
 server:
   port: 8081
+
 
