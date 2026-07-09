@@ -25,6 +25,7 @@ public class Product {
 
     @Column(nullable = false, unique = true)
     private String slug; // for SEO
+
     @Column(nullable = false)
     private String name;
     @Column(length = 500)

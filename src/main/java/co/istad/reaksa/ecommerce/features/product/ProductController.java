@@ -16,6 +16,7 @@ public class ProductController {
 
     private final ProductService productService;
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping
     public Page<ProductResponse> findAll(
             @RequestParam(required = false, defaultValue = "0") int pageNumber,

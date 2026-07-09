@@ -6,12 +6,15 @@ import co.istad.reaksa.ecommerce.features.order.dto.SoftDeleteUpdateRequest;
 import co.istad.reaksa.ecommerce.features.order.dto.StatusUpdateRequest;
 import co.istad.reaksa.ecommerce.features.product.Product;
 import co.istad.reaksa.ecommerce.features.product.ProductRepository;
+import co.istad.reaksa.ecommerce.security.SecurityUtils;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -120,7 +123,12 @@ public class OrderServiceImpl implements OrderService{
         order.setOrderLines(orderLines);
 
         //Security related
-        order.setCustomerId("ISTAD");
+        Authentication auth = SecurityContextHolder
+                .getContext()
+                .getAuthentication();
+
+
+        order.setCustomerId(SecurityUtils.extractUserId());
 
         order.setIsDeleted(false);
         order.setOrderedAt(LocalDateTime.now());

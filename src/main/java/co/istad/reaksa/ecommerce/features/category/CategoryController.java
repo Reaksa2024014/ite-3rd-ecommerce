@@ -18,6 +18,12 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/{id}")
+    public CategoryResponse getCategoryById(@PathVariable Integer id) {
+        return categoryService.getCategoryById(id);
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public CategoryResponse createNew(@Valid @RequestBody CreateCategoryRequest createCategoryRequest){
@@ -34,11 +40,7 @@ public class CategoryController {
     }
 
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/{id}")
-    public CategoryResponse getCategoryById(@PathVariable Integer id) {
-        return categoryService.getCategoryById(id);
-    }
+
 
 
     @ResponseStatus(HttpStatus.OK)

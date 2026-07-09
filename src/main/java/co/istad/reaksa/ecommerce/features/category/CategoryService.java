@@ -10,7 +10,6 @@ import java.util.List;
 public interface CategoryService {
     CategoryResponse createNew(CreateCategoryRequest createCategoryRequest);
 
-
     Page<CategoryResponse> getAllCategories(int pageNumber, int pageSize);
 
     CategoryResponse getCategoryById(Integer id);

@@ -7,6 +7,11 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 20MB
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9999/realms/ite-ecommerce
   jpa:
     hibernate:
       ddl-auto: update
@@ -21,9 +26,12 @@ spring:
     password: ${PASSWORD}
   application:
     name: ite-3rd-ecommerce
-
-
 server:
   port: 8081
-
+keycloak:
+  server-url: http://localhost:9999
+  realm: master
+  target-realm: ite-ecommerce
+  client-id: ite-ecommerce-spring-api
+  client-secret: CY7PxXmWZqluv60OoAuwcPVmZORYRM2g
 
